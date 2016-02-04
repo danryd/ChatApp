@@ -1,0 +1,28 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title></title>
+    <link href="~/Content/Style.css" rel="stylesheet" />
+</head>
+<body>
+    <header>
+        <h1>Tjatt</h1>
+        <div class="identity">
+            @if (@User.Identity.IsAuthenticated)
+            {
+                <div>
+                    <span>Inloggad som:  @User.Identity.Name </span>
+                </div>
+                <div> @Html.ActionLink("Logga ut", "Logout", "Home")</div>
+            }
+        </div>
+    </header>
+<div>
+    @RenderBody()
+</div>
+    <script src="~/Scripts/jquery-2.2.0.min.js"></script>
+    @RenderSection("scripts", required: false)
+</body>
+</html>
