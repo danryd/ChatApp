@@ -33,6 +33,33 @@
        
 
     };
+    var domList = $('.userList');
+    var userList;
+    var updateUserlist = function () {
+        domList.empty();
+        for (var i = 0;i<userList.length;i++) {
+            console.log("appending: " + userList[i]);
+            domList.append('<div>' + userList[i] + ' </div>');
+            
+        }
+    }
+    chat.client.joined = function (username) {
+        console.log("joining: " + username);
+         userList.push(username);
+         updateUserlist();
+    }
+    chat.client.left = function (username) {
+        console.log("left: " + username);
+        userList.pop(username);
+        updateUserlist();
+
+    }
+   
+    chat.client.currentUsers = function (userlist) {
+        console.log("users: " + userlist);
+        userList = userlist;
+        updateUserlist();
+    }
     // Get the user name and store it to prepend to messages.
     // Set initial focus to message input box.
     $('.chatbuttonInput').focus();
