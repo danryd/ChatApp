@@ -74,6 +74,9 @@ input, button {
     .message.private {
         background: #00ced1;
     }
+     .message.info {
+        background: #ddd;
+    }
      .message.error {
         background: #e99;
     }

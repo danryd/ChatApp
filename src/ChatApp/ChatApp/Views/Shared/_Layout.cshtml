@@ -8,7 +8,12 @@
 </head>
 <body>
     <header>
-        <h1>Tjatt</h1>
+        <h1>
+            Tjatt @if (ViewBag.Room != null)
+            {<span>(#@ViewBag.Room)</span>
+            }
+            @Html.Hidden("roomId", (string)ViewBag.Room)
+        </h1>
         <div class="identity">
             @if (@User.Identity.IsAuthenticated)
             {
@@ -19,9 +24,9 @@
             }
         </div>
     </header>
-<div>
-    @RenderBody()
-</div>
+    <div>
+        @RenderBody()
+    </div>
     <script src="~/Scripts/jquery-2.2.0.min.js"></script>
     @RenderSection("scripts", required: false)
 </body>

@@ -1,5 +1,6 @@
 ﻿$(function () {
-    $('.messageInput').keyup(function (e) {
+    var room = $('#roomId').val();
+     $('.messageInput').keyup(function (e) {
 
         if (e.keyCode === 13) {
             $('.sendButton').trigger("click");
@@ -65,14 +66,23 @@
     $('.chatbuttonInput').focus();
     // Start the connection.
     $.connection.hub.start().done(function () {
+        chat.server.join(room);
         $('.sendButton').click(function () {
             // Call the Send method on the hub.
             chat.server.send($('.messageInput').val());
+
             // Clear text box and reset focus for next comment.
             $('.messageInput').val('').focus();
 
         });
     });
+    $(window).unload(function () {
+
+        chat.server.leave(room);
+
+    });
+
+
     ion.sound({
         sounds: [
            

@@ -35,4 +35,13 @@ namespace ChatApp
             return RedirectToAction("Index");
         }
     }
+
+    public class RoomController : Controller
+    {
+        public ActionResult Index(string room)
+        {
+            ViewBag.Room = room;
+            return View();
+        }
+    }
 }

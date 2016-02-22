@@ -1,4 +1,6 @@
-﻿using System.Web.Mvc;
+﻿using System.Runtime.InteropServices;
+using System.Security.Policy;
+using System.Web.Mvc;
 using System.Web.Routing;
 using ChatApp;
 using Microsoft.AspNet.SignalR;
@@ -22,12 +24,15 @@ namespace ChatApp
 
             });
             app.MapSignalR();
+            
         }
 
         public static void RegisterRoutes(RouteCollection routes)
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
-
+            routes.MapRoute("chat","room/{room}",
+                 new { controller = "Room", action = "Index", room = UrlParameter.Optional }
+            );
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
