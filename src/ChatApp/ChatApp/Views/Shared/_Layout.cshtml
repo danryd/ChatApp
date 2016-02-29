@@ -9,7 +9,7 @@
 <body>
     <header>
         <h1>
-            Tjatt @if (ViewBag.Room != null)
+            Chat @if (ViewBag.Room != null)
             {<span>(#@ViewBag.Room)</span>
             }
             @Html.Hidden("roomId", (string)ViewBag.Room)

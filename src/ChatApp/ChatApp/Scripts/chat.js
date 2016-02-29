@@ -69,7 +69,7 @@
         chat.server.join(room);
         $('.sendButton').click(function () {
             // Call the Send method on the hub.
-            chat.server.send($('.messageInput').val());
+            chat.server.send($('.messageInput',room).val());
 
             // Clear text box and reset focus for next comment.
             $('.messageInput').val('').focus();

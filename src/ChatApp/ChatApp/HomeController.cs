@@ -12,7 +12,8 @@ namespace ChatApp
     {
         public ActionResult Index()
         {
-            return View();
+            var rooms = new RoomAccess().RoomsWithUsers();
+            return View(rooms);
         }
         [AllowAnonymous]
         public ActionResult Login()
@@ -35,7 +36,7 @@ namespace ChatApp
             return RedirectToAction("Index");
         }
     }
-
+    [Authorize]
     public class RoomController : Controller
     {
         public ActionResult Index(string room)
